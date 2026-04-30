@@ -203,32 +203,74 @@ with plot_col:
 
     st.pyplot(fig, use_container_width=True)
 
-with info_col:
-    st.markdown("## Detection Summary")
+current_results = {}
 
-    st.markdown("### Current Parameters")
+for name, flux in [
+    ("Tophat", flux_tophat),
+    ("FRED", flux_fred),
+    ("SBPL", flux_sbpl),
+]:
+    avg_values = []
+
+    for start, end in obs_windows:
+        avg_flux = average_flux_in_window(t, flux, start, end)
+        avg_values.append(avg_flux)
+
+    max_avg = max(avg_values)
+    result = "DETECTED" if max_avg > threshold else "not detected"
+
+    current_results[name] = (max_avg, result)
+
+with info_col:
+    st.markdown("### Detection Summary")
 
     st.markdown(
         f"""
-        <div style="font-size:30px; line-height:1.9;">
-        <b>t<sub>0</sub>:</b> {start_time:.2f} days<br>
-        <b>F<sub>0</sub>:</b> {F0_current:.2f} Jy<br>
-        <b>τ:</b> {tau_current:.2f} days
+        <div style="font-size:26px; line-height:1.6;">
+        Transient Start Time <b>t<sub>0</sub></b> = {start_time:.2f} days<br>
+        Peak Flux <b>F<sub>0</sub></b> = {F0_current:.2f} Jy<br>
+        Characteristic Duration <b>τ</b> = {tau_current:.2f} days
         </div>
         """,
         unsafe_allow_html=True
     )
 
-    st.markdown("---")
-    
-    st.markdown("### Detection Probability Over t<sub>0</sub>", unsafe_allow_html=True)
+    st.markdown(
+        "<div style='height:18px;'></div>",
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         f"""
-        <div style="font-size:32px; line-height:1.8;">
-        <b>Tophat:</b> {100*fractions['Tophat']:.1f}% <span style="font-size:26px;">({counts['Tophat']}/{total})</span><br>
-        <b>FRED:</b> {100*fractions['FRED']:.1f}% <span style="font-size:26px;">({counts['FRED']}/{total})</span><br>
-        <b>SBPL:</b> {100*fractions['SBPL']:.1f}% <span style="font-size:26px;">({counts['SBPL']}/{total})</span>
+        <div style="font-size:25px; line-height:1.55;">
+        <b>Tophat:</b> &lt;F&gt;<sub>max</sub> = {current_results['Tophat'][0]:.3f} Jy, {current_results['Tophat'][1]}<br>
+        <b>FRED:</b> &lt;F&gt;<sub>max</sub> = {current_results['FRED'][0]:.3f} Jy, {current_results['FRED'][1]}<br>
+        <b>SBPL:</b> &lt;F&gt;<sub>max</sub> = {current_results['SBPL'][0]:.3f} Jy, {current_results['SBPL'][1]}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        "<hr style='margin-top:18px; margin-bottom:18px;'>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <div style="font-size:26px; font-weight:700; margin-bottom:8px;">
+        Detection Probability Over t<sub>0</sub>:
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        f"""
+        <div style="font-size:25px; line-height:1.55;">
+        <b>Tophat:</b> {counts['Tophat']}/{total} = {100*fractions['Tophat']:.1f}%<br>
+        <b>FRED:</b> {counts['FRED']}/{total} = {100*fractions['FRED']:.1f}%<br>
+        <b>SBPL:</b> {counts['SBPL']}/{total} = {100*fractions['SBPL']:.1f}%
         </div>
         """,
         unsafe_allow_html=True
