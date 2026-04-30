@@ -70,7 +70,7 @@ def average_flux_in_window(t, flux, start, end):
     if np.sum(mask) < 2:
         return 0.0
 
-    integral = np.trapz(flux[mask], t[mask])
+    integral = np.trapezoid(flux[mask], t[mask])
     return integral / (end - start)
 
 def detection_fraction_over_start_times(
