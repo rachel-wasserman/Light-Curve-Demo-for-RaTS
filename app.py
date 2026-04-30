@@ -8,39 +8,22 @@ st.markdown(
     """
     <style>
     .block-container {
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         padding-bottom: 1rem;
     }
+
     div[data-testid="stMarkdownContainer"] {
         font-size: 22px;
     }
-    div[data-testid="stMetricValue"] {
-        font-size: 30px;
-    }
-    div[data-testid="stMetricLabel"] {
-        font-size: 18px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
-st.markdown(
-    """
-    <style>
-    /* reduce page top padding */
-    .block-container {
-        padding-top: 1.0rem;
-    }
-
-    /* give slider tick labels room so they don't overlap the plot */
+    /* tighten spacing around slider row */
     div[data-testid="stSlider"] {
-        padding-bottom: 18px;
+        margin-bottom: -20px;
     }
 
-    /* reduce extra space below the slider row */
-    div[data-testid="stHorizontalBlock"] {
-        gap: 1.2rem;
+    /* add space above the plot container */
+    div[data-testid="stImage"] {
+        margin-top: 18px;
     }
     </style>
     """,
