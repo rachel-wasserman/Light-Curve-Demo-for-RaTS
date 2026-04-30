@@ -25,6 +25,11 @@ st.markdown(
     div[data-testid="stImage"] {
         margin-top: 18px;
     }
+
+    /* push plot + detection summary down away from sliders */
+    .main-display-spacer {
+        height: 34px;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -167,6 +172,8 @@ fractions, counts, total = detection_fraction_over_start_times(
 # -----------------------
 # Main display layout
 # -----------------------
+st.markdown('<div class="main-display-spacer"></div>', unsafe_allow_html=True)
+
 plot_col, info_col = st.columns([2.2, 1])
 
 with plot_col:
@@ -229,14 +236,15 @@ with info_col:
         <div style="font-size:26px; line-height:1.6;">
         Transient Start Time <b>t<sub>0</sub></b> = {start_time:.2f} days<br>
         Peak Flux <b>F<sub>0</sub></b> = {F0_current:.2f} Jy<br>
-        Characteristic Duration <b>τ</b> = {tau_current:.2f} days
+        Characteristic Duration <b>τ</b> = {tau_current:.2f} days<br>
+        Max Window-Averaged Flux <b>&lt;F&gt;<sub>max</sub></b> = highest average flux measured across the observation windows
         </div>
         """,
         unsafe_allow_html=True
     )
 
     st.markdown(
-        "<div style='height:18px;'></div>",
+        "<div style='height:12px;'></div>",
         unsafe_allow_html=True
     )
 
