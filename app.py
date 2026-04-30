@@ -28,7 +28,7 @@ st.markdown(
 
     /* push plot + detection summary down away from sliders */
     .main-display-spacer {
-        height: 34px;
+        height: 20px;
     }
     </style>
     """,
@@ -236,15 +236,14 @@ with info_col:
         <div style="font-size:26px; line-height:1.6;">
         Transient Start Time <b>t<sub>0</sub></b> = {start_time:.2f} days<br>
         Peak Flux <b>F<sub>0</sub></b> = {F0_current:.2f} Jy<br>
-        Characteristic Duration <b>τ</b> = {tau_current:.2f} days<br>
-        Max Window-Averaged Flux <b>&lt;F&gt;<sub>max</sub></b> = highest average flux measured across the observation windows
+        Characteristic Duration <b>τ</b> = {tau_current:.2f} days
         </div>
         """,
         unsafe_allow_html=True
     )
 
     st.markdown(
-        "<div style='height:12px;'></div>",
+        "<hr style='margin-top:18px; margin-bottom:18px;'>",
         unsafe_allow_html=True
     )
 
