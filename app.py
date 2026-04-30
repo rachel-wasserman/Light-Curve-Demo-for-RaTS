@@ -16,14 +16,14 @@ st.markdown(
         font-size: 22px;
     }
 
-    /* Move the red value label above the slider thumb */
-    div[data-testid="stSlider"] [data-testid="stWidgetLabel"] + div div {
-        overflow: visible !important;
+    /* tighten spacing around slider row */
+    div[data-testid="stSlider"] {
+        margin-bottom: -20px;
     }
 
-    div[data-testid="stSlider"] div[style*="transform"] {
-        transform: translateY(-18px) !important;
-        z-index: 10 !important;
+    /* add space above the plot container */
+    div[data-testid="stImage"] {
+        margin-top: 18px;
     }
     </style>
     """,
