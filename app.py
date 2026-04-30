@@ -25,6 +25,28 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown(
+    """
+    <style>
+    /* reduce page top padding */
+    .block-container {
+        padding-top: 1.0rem;
+    }
+
+    /* give slider tick labels room so they don't overlap the plot */
+    div[data-testid="stSlider"] {
+        padding-bottom: 18px;
+    }
+
+    /* reduce extra space below the slider row */
+    div[data-testid="stHorizontalBlock"] {
+        gap: 1.2rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # -----------------------
 # Defaults
 # -----------------------
@@ -141,7 +163,6 @@ with col2:
 with col3:
     tau_current = st.slider(r"$\tau$ (days)", 0.1, 5.0, tau_default, 0.05)
 
-st.markdown("<div style='height: 24px;'></div>", unsafe_allow_html=True)
 # -----------------------
 # Compute current curves
 # -----------------------
