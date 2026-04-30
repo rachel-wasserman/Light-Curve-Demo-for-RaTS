@@ -16,14 +16,14 @@ st.markdown(
         font-size: 22px;
     }
 
-    /* tighten spacing around slider row */
-    div[data-testid="stSlider"] {
-        margin-bottom: -20px;
+    /* Move red slider value label upward */
+    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
+        transform: translateY(-10px);
     }
 
-    /* add space above the plot container */
-    div[data-testid="stImage"] {
-        margin-top: 18px;
+    /* Keep a little room below sliders */
+    div[data-testid="stSlider"] {
+        margin-bottom: 6px;
     }
     </style>
     """,
