@@ -16,14 +16,14 @@ st.markdown(
         font-size: 22px;
     }
 
-    /* Move red slider value label upward */
-    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
-        transform: translateY(-10px);
+    /* Move the red value label above the slider thumb */
+    div[data-testid="stSlider"] [data-testid="stWidgetLabel"] + div div {
+        overflow: visible !important;
     }
 
-    /* Keep a little room below sliders */
-    div[data-testid="stSlider"] {
-        margin-bottom: 6px;
+    div[data-testid="stSlider"] div[style*="transform"] {
+        transform: translateY(-18px) !important;
+        z-index: 10 !important;
     }
     </style>
     """,
