@@ -141,6 +141,7 @@ with col2:
 with col3:
     tau_current = st.slider(r"$\tau$ (days)", 0.1, 5.0, tau_default, 0.05)
 
+st.markdown("<div style='height: 24px;'></div>", unsafe_allow_html=True)
 # -----------------------
 # Compute current curves
 # -----------------------
