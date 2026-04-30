@@ -234,9 +234,9 @@ with info_col:
     st.markdown(
         f"""
         <div style="font-size:26px; line-height:1.6;">
-        Transient Start Time <b>t<sub>0</sub></b> = {start_time:.2f} days<br>
-        Peak Flux <b>F<sub>0</sub></b> = {F0_current:.2f} Jy<br>
-        Characteristic Duration <b>τ</b> = {tau_current:.2f} days
+        Transient Start Time $t_0$ = {start_time:.2f} days<br>
+        Peak Flux $F_0$ = {F0_current:.2f} Jy<br>
+        Characteristic Duration $\\tau$ = {tau_current:.2f} days
         </div>
         """,
         unsafe_allow_html=True
@@ -250,9 +250,9 @@ with info_col:
     st.markdown(
         f"""
         <div style="font-size:25px; line-height:1.55;">
-        <b>Tophat:</b> &lt;F&gt;<sub>max</sub> = {current_results['Tophat'][0]:.3f} Jy, {current_results['Tophat'][1]}<br>
-        <b>FRED:</b> &lt;F&gt;<sub>max</sub> = {current_results['FRED'][0]:.3f} Jy, {current_results['FRED'][1]}<br>
-        <b>SBPL:</b> &lt;F&gt;<sub>max</sub> = {current_results['SBPL'][0]:.3f} Jy, {current_results['SBPL'][1]}
+        <b>Tophat:</b> $\\langle F \\rangle_{{\\max}}$ = {current_results['Tophat'][0]:.3f} Jy, {current_results['Tophat'][1]}<br>
+        <b>FRED:</b> $\\langle F \\rangle_{{\\max}}$ = {current_results['FRED'][0]:.3f} Jy, {current_results['FRED'][1]}<br>
+        <b>SBPL:</b> $\\langle F \\rangle_{{\\max}}$ = {current_results['SBPL'][0]:.3f} Jy, {current_results['SBPL'][1]}
         </div>
         """,
         unsafe_allow_html=True
